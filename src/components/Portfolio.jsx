@@ -13,17 +13,15 @@ import thumb12 from "../assets/portfolio/thumb-12.jpg";
 import thumb13 from "../assets/portfolio/thumb-13.jpg";
 import thumb14 from "../assets/portfolio/thumb-14.jpg";
 import thumb15 from "../assets/portfolio/thumb-15.jpg";
+import doodleMan from "../assets/portfolio/doodle-man.png";
+import doodleFlower from "../assets/portfolio/doodle-flower.png";
 
-const scripted = [thumb01, thumb02, thumb03, thumb04, thumb05, thumb06];
-const creative = [thumb07, thumb08, thumb09, thumb10, thumb11, thumb12, thumb13, thumb14, thumb15];
+const scripted = [thumb01, thumb02, thumb03, thumb04, thumb05];
+const creative = [thumb06, thumb07, thumb08, thumb09, thumb10, thumb11, thumb12, thumb13, thumb14, thumb15];
 
 function PlayIcon() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      className="h-6 w-6 text-ink"
-    >
+    <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4 text-white">
       <path d="M8 5v14l11-7z" />
     </svg>
   );
@@ -31,20 +29,17 @@ function PlayIcon() {
 
 function Gallery({ items, label }) {
   return (
-    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4 lg:grid-cols-4">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
       {items.map((src, i) => (
-        <div
-          key={i}
-          className="group relative aspect-[9/16] overflow-hidden rounded-2xl bg-ink/5"
-        >
+        <div key={i} className="group relative aspect-[9/16] overflow-hidden bg-ink/5">
           <img
             src={src}
             alt={`${label} sample ${i + 1}`}
             loading="lazy"
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
-          <div className="absolute inset-0 flex items-center justify-center bg-ink/0 transition-colors duration-300 group-hover:bg-ink/20">
-            <span className="flex h-11 w-11 scale-90 items-center justify-center rounded-full bg-cream/90 opacity-0 shadow-lg transition-all duration-300 group-hover:scale-100 group-hover:opacity-100">
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-ink/40 backdrop-blur-sm">
               <PlayIcon />
             </span>
           </div>
@@ -56,41 +51,37 @@ function Gallery({ items, label }) {
 
 export default function Portfolio() {
   return (
-    <section id="work" className="py-24 md:py-32">
-      <div className="mx-auto max-w-7xl px-6 md:px-10">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-bold uppercase tracking-[0.3em] text-muted">
-            Selected work
-          </p>
-          <h2 className="font-display mt-3 text-4xl font-bold uppercase tracking-tight text-ink sm:text-5xl">
-            Scripted &amp; Straightforward
-          </h2>
-          <p className="mt-4 text-ink-soft">
-            Clean, product-first videos built around a clear script and a
-            confident call to action.
-          </p>
-        </div>
-        <div className="mt-12">
-          <Gallery items={scripted} label="Scripted" />
-        </div>
+    <section id="work" className="py-16 md:py-24">
+      <div className="relative mx-auto max-w-7xl px-6 md:px-10">
+        <img
+          src={doodleMan}
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-6 right-6 hidden w-40 rotate-3 opacity-90 sm:block md:right-10 md:w-56"
+        />
+        <h2 className="font-display max-w-2xl text-5xl font-bold uppercase leading-[0.95] tracking-tight text-ink sm:text-6xl md:text-7xl">
+          Scripted &amp;
+          <br /> Straightforward
+        </h2>
+      </div>
+      <div className="mx-auto mt-10 max-w-7xl px-6 md:mt-14 md:px-10">
+        <Gallery items={scripted} label="Scripted" />
       </div>
 
-      <div className="mx-auto mt-24 max-w-7xl px-6 md:px-10 md:mt-32">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-bold uppercase tracking-[0.3em] text-muted">
-            More work
-          </p>
-          <h2 className="font-display mt-3 text-4xl font-bold uppercase tracking-tight text-ink sm:text-5xl">
-            Creative &amp; Playful
-          </h2>
-          <p className="mt-4 text-ink-soft">
-            Unscripted, trend-driven content that feels native to the feed
-            &mdash; playful takes with real personality.
-          </p>
-        </div>
-        <div className="mt-12">
-          <Gallery items={creative} label="Creative" />
-        </div>
+      <div className="relative mx-auto mt-16 max-w-7xl px-6 md:mt-24 md:px-10">
+        <img
+          src={doodleFlower}
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-4 left-6 hidden w-32 -rotate-6 opacity-90 sm:block md:left-10 md:w-44"
+        />
+        <h2 className="font-display ml-auto max-w-2xl text-right text-5xl font-bold uppercase leading-[0.95] tracking-tight text-ink sm:text-6xl md:text-7xl">
+          Creative &amp;
+          <br /> Playful
+        </h2>
+      </div>
+      <div className="mx-auto mt-10 max-w-7xl px-6 md:mt-14 md:px-10">
+        <Gallery items={creative} label="Creative" />
       </div>
     </section>
   );

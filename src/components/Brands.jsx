@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import logo01 from "../assets/logos/logo-01.png";
 import logo02 from "../assets/logos/logo-02.jpg";
 import logo03 from "../assets/logos/logo-03.webp";
@@ -18,33 +19,77 @@ const logos = [
   logo08, logo09, logo10, logo11, logo12, logo13, logo14,
 ];
 
+function ArrowIcon({ flip }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      className={`h-5 w-5 ${flip ? "rotate-180" : ""}`}
+    >
+      <path d="M9 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 export default function Brands() {
-  const track = [...logos, ...logos];
+  const trackRef = useRef(null);
+
+  const scroll = (dir) => {
+    const el = trackRef.current;
+    if (!el) return;
+    el.scrollBy({ left: dir * el.clientWidth * 0.7, behavior: "smooth" });
+  };
 
   return (
-    <section className="border-y border-line bg-white/40 py-16">
-      <div className="mx-auto max-w-7xl px-6 text-center md:px-10">
-        <p className="text-sm font-bold uppercase tracking-[0.3em] text-muted">
-          Trusted by
-        </p>
-        <h2 className="font-display mt-3 text-3xl font-bold uppercase tracking-tight text-ink sm:text-4xl">
-          100 Brands &amp; Counting
-        </h2>
-      </div>
+    <section className="py-16 md:py-20">
+      <div className="mx-auto flex max-w-7xl items-center gap-3 px-4 md:px-6">
+        <button
+          type="button"
+          onClick={() => scroll(-1)}
+          aria-label="Previous brands"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-ink-soft transition-colors hover:text-ink"
+        >
+          <ArrowIcon />
+        </button>
 
-      <div className="mt-12 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-        <div className="marquee-track flex w-max items-center gap-16">
-          {track.map((logo, i) => (
-            <img
+        <div
+          ref={trackRef}
+          className="flex flex-1 snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth px-1 py-2 [scrollbar-width:none] sm:gap-8 md:gap-10 [&::-webkit-scrollbar]:hidden"
+        >
+          {logos.map((logo, i) => (
+            <div
               key={i}
-              src={logo}
-              alt=""
-              aria-hidden={i >= logos.length}
-              className="h-10 w-auto shrink-0 object-contain opacity-70 grayscale transition hover:opacity-100 hover:grayscale-0 sm:h-12"
-            />
+              className="flex aspect-square w-24 shrink-0 snap-start items-center justify-center overflow-hidden rounded-full bg-white shadow-sm shadow-ink/5 sm:w-28 md:w-32"
+            >
+              <img
+                src={logo}
+                alt=""
+                className="h-full w-full object-cover"
+              />
+            </div>
           ))}
         </div>
+
+        <button
+          type="button"
+          onClick={() => scroll(1)}
+          aria-label="Next brands"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-ink-soft transition-colors hover:text-ink"
+        >
+          <ArrowIcon flip />
+        </button>
       </div>
+
+      <p className="mt-8 text-center font-serif text-lg italic">
+        <span>(</span>
+        <span className="text-[#6b4a8f]">100</span>{" "}
+        <span className="text-ink">brands</span>{" "}
+        <span className="text-[#d9531e]">&amp;</span>{" "}
+        <span className="text-navy">counting</span>
+        <span>)</span>
+      </p>
     </section>
   );
 }

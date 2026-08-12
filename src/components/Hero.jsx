@@ -1,12 +1,11 @@
 import portraitMain from "../assets/hero/portrait-main.png";
-import heroWide from "../assets/hero/hero-wide.jpg";
 import sigNiki from "../assets/hero/hero-4.png";
 import sigZamora from "../assets/hero/hero-2.png";
 
 export default function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden pb-20 md:pb-28">
-      <div className="relative mx-auto max-w-6xl px-6 pt-10 md:px-10 md:pt-16">
+    <section id="top" className="relative overflow-hidden">
+      <div className="relative mx-auto max-w-6xl px-6 pt-10 pb-16 md:px-10 md:pt-16 md:pb-24">
         <div className="relative mx-auto w-full max-w-[300px] sm:max-w-[360px] md:max-w-[420px]">
           <img
             src={sigNiki}
@@ -32,42 +31,6 @@ export default function Hero() {
           Premium
           <br /> UGC Creator
         </p>
-      </div>
-
-      <div className="mx-auto mt-24 max-w-2xl px-6 text-center md:mt-16 md:px-10">
-        <p className="text-ink-soft">
-          Premium UGC creator making scroll-stopping, high-converting
-          short-form content for brands that want to feel real.
-        </p>
-
-        <div className="mt-10 flex items-center justify-center gap-10 border-t border-line pt-6">
-          <div>
-            <p className="font-display text-3xl font-bold text-ink">100+</p>
-            <p className="text-xs uppercase tracking-[0.12em] text-muted">
-              Brands
-            </p>
-          </div>
-          <div>
-            <p className="font-display text-3xl font-bold text-ink">25</p>
-            <p className="text-xs uppercase tracking-[0.12em] text-muted">
-              Gen Z, Chicago
-            </p>
-          </div>
-          <div>
-            <p className="font-display text-3xl font-bold text-ink">5★</p>
-            <p className="text-xs uppercase tracking-[0.12em] text-muted">
-              Client Reviews
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div className="mx-auto mt-16 max-w-7xl px-6 md:px-10">
-        <img
-          src={heroWide}
-          alt="Niki Zamora on set"
-          className="h-56 w-full rounded-[2rem] object-cover sm:h-72 md:h-96"
-        />
       </div>
     </section>
   );
