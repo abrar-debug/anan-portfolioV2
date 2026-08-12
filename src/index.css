@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #fcf5ea;
+  --color-ink: #232924;
+  --color-ink-soft: #4a4f47;
+  --color-muted: #908f87;
+  --color-line: #ded4c3;
+  --color-white: #ffffff;
+  --color-navy: #003a96;
+
+  --font-display: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-body: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--color-ink);
+  color: var(--color-cream);
+}
+
+.marquee-track {
+  animation: marquee 32s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
