@@ -6,8 +6,8 @@ import sigZamora from "../assets/hero/hero-2.png";
 export default function Hero() {
   return (
     <section id="top" className="relative overflow-hidden pb-20 md:pb-28">
-      <div className="relative mx-auto flex max-w-6xl justify-center px-6 pt-10 md:px-10 md:pt-16">
-        <div className="relative w-full max-w-[300px] sm:max-w-[360px] md:max-w-[420px]">
+      <div className="relative mx-auto max-w-6xl px-6 pt-10 md:px-10 md:pt-16">
+        <div className="relative mx-auto w-full max-w-[300px] sm:max-w-[360px] md:max-w-[420px]">
           <img
             src={sigNiki}
             alt=""
@@ -26,12 +26,12 @@ export default function Hero() {
             alt="Niki Zamora"
             className="relative z-10 aspect-[4/5] w-full object-cover"
           />
-
-          <p className="font-display absolute -bottom-8 left-1/2 z-10 w-max -translate-x-1/2 text-sm font-bold uppercase tracking-[0.18em] text-navy sm:-right-4 sm:bottom-8 sm:left-auto sm:translate-x-0 sm:text-right md:text-base">
-            Premium
-            <br className="hidden sm:block" /> UGC Creator
-          </p>
         </div>
+
+        <p className="font-display absolute top-[74%] left-[62%] z-10 hidden w-max text-sm font-bold uppercase leading-snug tracking-[0.18em] text-navy sm:block md:top-[70%] md:left-[66%] md:text-base">
+          Premium
+          <br /> UGC Creator
+        </p>
       </div>
 
       <div className="mx-auto mt-24 max-w-2xl px-6 text-center md:mt-16 md:px-10">
