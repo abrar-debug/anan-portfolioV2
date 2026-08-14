@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 140" role="img" aria-label="Placeholder signature">
+  <path
+    d="M20 100 C 60 20, 90 20, 100 90 C 108 40, 130 30, 150 70 C 165 95, 180 60, 210 50 C 250 35, 300 45, 380 20"
+    fill="none"
+    stroke="#A39C8C"
+    stroke-width="6"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.7"
+  />
+</svg>
