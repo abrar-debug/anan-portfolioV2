@@ -1,7 +1,7 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
-import Brands from "./components/Brands";
+import Projects from "./components/Projects";
 import Portfolio from "./components/Portfolio";
 import Testimonial from "./components/Testimonial";
 import CTA from "./components/CTA";
@@ -14,7 +14,7 @@ function MainSite() {
       <main>
         <Hero />
         <About />
-        <Brands />
+        <Projects />
         <Portfolio />
         <Testimonial />
         <CTA />
