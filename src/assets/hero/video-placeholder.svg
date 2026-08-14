@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Placeholder video">
+  <rect width="640" height="360" fill="#D9D5CC"/>
+  <circle cx="320" cy="180" r="54" fill="none" stroke="#A39C8C" stroke-width="8"/>
+  <path d="M304 152 L304 208 L352 180 Z" fill="#A39C8C"/>
+</svg>
