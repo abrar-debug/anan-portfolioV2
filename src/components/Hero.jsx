@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { sanityClient, urlFor } from "../lib/sanity";
-import portraitPlaceholder from "../assets/hero/portrait-placeholder.svg";
+import portraitPlaceholder from "../assets/placeholders/image-placeholder.svg";
 import signaturePlaceholder from "../assets/hero/signature-placeholder.svg";
 
 const HERO_QUERY = `*[_type == "hero" && _id == "hero"][0]{mainImage, signatureImage, subheading}`;

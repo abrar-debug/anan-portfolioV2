@@ -16,7 +16,11 @@ export const structure: StructureResolver = (S) =>
         .title('Projects')
         .id('projects')
         .child(S.document().schemaType('projects').documentId('projects')),
+      S.listItem()
+        .title('Architecture')
+        .id('scriptedPortfolio')
+        .child(S.document().schemaType('scriptedPortfolio').documentId('scriptedPortfolio')),
       ...S.documentTypeListItems().filter(
-        (item) => !['hero', 'about', 'projects'].includes(item.getId() ?? ''),
+        (item) => !['hero', 'about', 'projects', 'scriptedPortfolio'].includes(item.getId() ?? ''),
       ),
     ])
