@@ -20,7 +20,25 @@ export const structure: StructureResolver = (S) =>
         .title('Architecture')
         .id('scriptedPortfolio')
         .child(S.document().schemaType('scriptedPortfolio').documentId('scriptedPortfolio')),
+      S.listItem()
+        .title('Interior Design')
+        .id('interiorPortfolio')
+        .child(S.document().schemaType('interiorPortfolio').documentId('interiorPortfolio')),
+      S.listItem()
+        .title('Photography')
+        .id('photographyPortfolio')
+        .child(
+          S.document().schemaType('photographyPortfolio').documentId('photographyPortfolio'),
+        ),
       ...S.documentTypeListItems().filter(
-        (item) => !['hero', 'about', 'projects', 'scriptedPortfolio'].includes(item.getId() ?? ''),
+        (item) =>
+          ![
+            'hero',
+            'about',
+            'projects',
+            'scriptedPortfolio',
+            'interiorPortfolio',
+            'photographyPortfolio',
+          ].includes(item.getId() ?? ''),
       ),
     ])
