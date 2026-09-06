@@ -6,6 +6,7 @@ import {scriptedPortfolio} from './scriptedPortfolio'
 import {interiorPortfolio} from './interiorPortfolio'
 import {photographyPortfolio} from './photographyPortfolio'
 import {testimonials} from './testimonials'
+import {cta} from './cta'
 
 export const schemaTypes = [
   hero,
@@ -16,4 +17,5 @@ export const schemaTypes = [
   interiorPortfolio,
   photographyPortfolio,
   testimonials,
+  cta,
 ]

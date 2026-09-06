@@ -34,6 +34,10 @@ export const structure: StructureResolver = (S) =>
         .title('Testimonials')
         .id('testimonials')
         .child(S.document().schemaType('testimonials').documentId('testimonials')),
+      S.listItem()
+        .title("Let's Work (+ site-wide contact info)")
+        .id('cta')
+        .child(S.document().schemaType('cta').documentId('cta')),
       ...S.documentTypeListItems().filter(
         (item) =>
           ![
@@ -44,6 +48,7 @@ export const structure: StructureResolver = (S) =>
             'interiorPortfolio',
             'photographyPortfolio',
             'testimonials',
+            'cta',
           ].includes(item.getId() ?? ''),
       ),
     ])
