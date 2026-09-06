@@ -1,7 +1,15 @@
-import { useState } from "react";
-import portrait from "../assets/testimonial/portrait.png";
+import { useEffect, useState } from "react";
+import { sanityClient, urlFor } from "../lib/sanity";
+import imagePlaceholder from "../assets/placeholders/image-placeholder.svg";
 
-const testimonials = [
+const TESTIMONIALS_QUERY = `*[_type == "testimonials" && _id == "testimonials"][0]{
+  portraitImage,
+  heading,
+  items[]{ quote, name, company }
+}`;
+
+const DEFAULT_HEADING = "What are\nPeople saying\nAbout me?!?!";
+const DEFAULT_ITEMS = [
   {
     quote:
       "Working with Niki has been an absolute pleasure. Her ability to quickly understand our mission and translate it into engaging, high-quality short-form videos was impressive. She consistently delivered on time, and her turnaround on edits was incredibly fast without ever compromising quality.",
@@ -31,8 +39,22 @@ function ChevronIcon({ flip }) {
 }
 
 export default function Testimonial() {
+  const [data, setData] = useState(null);
   const [index, setIndex] = useState(0);
-  const active = testimonials[index];
+
+  useEffect(() => {
+    sanityClient
+      .fetch(TESTIMONIALS_QUERY)
+      .then(setData)
+      .catch((error) => console.error("Failed to load testimonials content:", error));
+  }, []);
+
+  const portraitUrl = data?.portraitImage
+    ? urlFor(data.portraitImage).width(720).url()
+    : imagePlaceholder;
+  const headingLines = (data?.heading ?? DEFAULT_HEADING).split("\n");
+  const testimonials = data?.items?.length ? data.items : DEFAULT_ITEMS;
+  const active = testimonials[index] ?? testimonials[0];
 
   const go = (dir) => {
     setIndex((i) => (i + dir + testimonials.length) % testimonials.length);
@@ -44,35 +66,42 @@ export default function Testimonial() {
         <div className="grid gap-10 md:grid-cols-[0.85fr_1.15fr] md:gap-16">
           <div className="relative">
             <img
-              src={portrait}
-              alt="Niki Zamora"
+              src={portraitUrl}
+              alt="Testimonial portrait"
               className="aspect-[4/5] w-full object-cover"
             />
 
-            <div className="absolute right-4 top-6 w-[80%] max-w-sm sm:right-8">
-              <span className="pointer-events-none absolute -right-3 -top-10 h-10 w-px bg-[#c9a24b]" />
-              <span className="pointer-events-none absolute -right-4 -top-11 h-2.5 w-2.5 rounded-full bg-[#f2c94c]" />
+            <div className="absolute top-6 right-4 w-[80%] max-w-sm sm:right-8">
+              <span className="pointer-events-none absolute -top-10 -right-3 h-10 w-px bg-[#c9a24b]" />
+              <span className="pointer-events-none absolute -top-11 -right-4 h-2.5 w-2.5 rounded-full bg-[#f2c94c]" />
 
-              <div className="relative border border-[#e91e8c]/70 px-4 pb-5 pt-4">
-                <span className="absolute -left-1 top-0 h-2 w-2 -translate-y-1/2 rounded-full border border-[#e91e8c]/70 bg-cream" />
-                <span className="absolute -right-1 top-0 h-2 w-2 -translate-y-1/2 rounded-full border border-[#e91e8c]/70 bg-cream" />
-                <span className="absolute -left-1 bottom-0 h-2 w-2 translate-y-1/2 rounded-full border border-[#e91e8c]/70 bg-cream" />
-                <span className="absolute -right-1 bottom-0 h-2 w-2 translate-y-1/2 rounded-full border border-[#e91e8c]/70 bg-cream" />
-                <span className="absolute left-1/2 top-0 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#e91e8c]/70 bg-cream" />
-                <span className="absolute left-1/2 bottom-0 h-2 w-2 -translate-x-1/2 translate-y-1/2 rounded-full border border-[#e91e8c]/70 bg-cream" />
+              <div className="relative border border-[#e91e8c]/70 px-4 pt-4 pb-5">
+                <span className="absolute top-0 -left-1 h-2 w-2 -translate-y-1/2 rounded-full border border-[#e91e8c]/70 bg-cream" />
+                <span className="absolute top-0 -right-1 h-2 w-2 -translate-y-1/2 rounded-full border border-[#e91e8c]/70 bg-cream" />
+                <span className="absolute bottom-0 -left-1 h-2 w-2 translate-y-1/2 rounded-full border border-[#e91e8c]/70 bg-cream" />
+                <span className="absolute bottom-0 -right-1 h-2 w-2 translate-y-1/2 rounded-full border border-[#e91e8c]/70 bg-cream" />
+                <span className="absolute top-0 left-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#e91e8c]/70 bg-cream" />
+                <span className="absolute bottom-0 left-1/2 h-2 w-2 -translate-x-1/2 translate-y-1/2 rounded-full border border-[#e91e8c]/70 bg-cream" />
 
                 <h2 className="font-display relative text-3xl font-bold uppercase leading-[1.05] text-ink sm:text-4xl">
-                  <span className="relative z-0 inline-block">
-                    <span className="absolute inset-0 z-0 bg-[#ec4fd8]" />
-                    <span className="relative z-10">What are</span>
-                  </span>
-                  <br />
-                  <span className="relative z-0 inline-block">
-                    <span className="absolute inset-0 z-0 translate-x-2 translate-y-1 bg-[#f6b8ef]" />
-                    <span className="relative z-10">People saying</span>
-                  </span>
-                  <br />
-                  About me?!?!
+                  {headingLines.map((line, i) => (
+                    <span key={i}>
+                      {i === 0 && (
+                        <span className="relative z-0 inline-block">
+                          <span className="absolute inset-0 z-0 bg-[#ec4fd8]" />
+                          <span className="relative z-10">{line}</span>
+                        </span>
+                      )}
+                      {i === 1 && (
+                        <span className="relative z-0 inline-block">
+                          <span className="absolute inset-0 z-0 translate-x-2 translate-y-1 bg-[#f6b8ef]" />
+                          <span className="relative z-10">{line}</span>
+                        </span>
+                      )}
+                      {i > 1 && line}
+                      {i < headingLines.length - 1 && <br />}
+                    </span>
+                  ))}
                 </h2>
               </div>
             </div>
@@ -102,7 +131,7 @@ export default function Testimonial() {
               <div className="mt-8 flex items-center justify-center gap-2">
                 {testimonials.map((t, i) => (
                   <button
-                    key={t.name}
+                    key={`${t.name}-${i}`}
                     type="button"
                     onClick={() => setIndex(i)}
                     aria-label={`Go to testimonial ${i + 1}`}
