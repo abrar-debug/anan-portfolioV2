@@ -11,13 +11,13 @@ const ABOUT_QUERY = `*[_type == "about" && _id == "about"][0]{
 
 const DEFAULT_HEADING = "Who Am I";
 const DEFAULT_DESCRIPTORS = [
-  "UGC Creator",
-  "Coffee Connoisseur",
-  "Cat & Dog Mom",
-  "Frequent Traveller",
-  "Gen Z (25 y/o)",
-  "Professional Dancer",
-  "Chicago Based",
+  "Architect",
+  "Design-Led Thinker",
+  "Detail-Oriented",
+  "Sustainable Design Advocate",
+  "Collaborative Problem Solver",
+  "Craft-Focused",
+  "Lifelong Learner",
 ];
 
 export default function About() {

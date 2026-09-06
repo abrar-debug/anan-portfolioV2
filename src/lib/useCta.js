@@ -12,8 +12,8 @@ const CTA_QUERY = `*[_type == "cta" && _id == "cta"][0]{
 const DEFAULTS = {
   heading: "Let's\nWork",
   brandName: "Anan Hoque Creative",
-  email: "nikizamora.business@gmail.com",
-  bookingUrl: "https://calendly.com/nikizamoraugc/ugc-consultation",
+  email: "hello@ananhoque.com",
+  bookingUrl: "https://calendly.com/ananhoque/consultation",
 };
 
 /**

@@ -36,7 +36,7 @@ export const cta = defineType({
       title: 'Contact email',
       description: 'Used site-wide for every "Email Me" link and contact text.',
       type: 'string',
-      initialValue: 'nikizamora.business@gmail.com',
+      initialValue: 'hello@ananhoque.com',
       validation: (Rule) => Rule.required().email(),
     }),
     defineField({
@@ -44,7 +44,7 @@ export const cta = defineType({
       title: 'Booking link',
       description: 'Used site-wide for every "Book a Call" link.',
       type: 'url',
-      initialValue: 'https://calendly.com/nikizamoraugc/ugc-consultation',
+      initialValue: 'https://calendly.com/ananhoque/consultation',
       validation: (Rule) => Rule.required().uri({scheme: ['http', 'https']}),
     }),
   ],

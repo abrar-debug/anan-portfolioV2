@@ -34,7 +34,7 @@ export const about = defineType({
     defineField({
       name: 'descriptors',
       title: 'Descriptor list',
-      description: 'Short bullet points, e.g. "UGC Creator".',
+      description: 'Short bullet points, e.g. "Architect".',
       type: 'array',
       of: [{type: 'string'}],
       validation: (Rule) => Rule.required().min(1),

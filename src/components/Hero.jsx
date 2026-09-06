@@ -4,7 +4,7 @@ import portraitPlaceholder from "../assets/placeholders/image-placeholder.svg";
 import signaturePlaceholder from "../assets/hero/signature-placeholder.svg";
 
 const HERO_QUERY = `*[_type == "hero" && _id == "hero"][0]{mainImage, signatureImage, subheading}`;
-const DEFAULT_SUBHEADING = "Premium\nUGC Creator";
+const DEFAULT_SUBHEADING = "Practicing\nArchitect";
 
 export default function Hero() {
   const [hero, setHero] = useState(null);
@@ -37,7 +37,7 @@ export default function Hero() {
 
           <img
             src={mainImageUrl}
-            alt="Niki Zamora"
+            alt="Anan Hoque"
             className="relative z-10 aspect-[4/5] w-full object-cover"
           />
         </div>

@@ -12,13 +12,13 @@ const DEFAULT_HEADING = "What are\nPeople saying\nAbout me?!?!";
 const DEFAULT_ITEMS = [
   {
     quote:
-      "Working with Niki has been an absolute pleasure. Her ability to quickly understand our mission and translate it into engaging, high-quality short-form videos was impressive. She consistently delivered on time, and her turnaround on edits was incredibly fast without ever compromising quality.",
+      "Working with Anan has been an absolute pleasure. Their ability to quickly understand our vision and translate it into thoughtful, functional design was impressive. They consistently delivered on time, and their turnaround on revisions was incredibly fast without ever compromising quality.",
     name: "Nina Diaz",
     company: "Action for the Climate Emergency",
   },
   {
     quote:
-      "One of the standout aspects of our UGC collaboration was the creator's authenticity and alignment with our brand values. The content felt natural, engaging, and genuinely demonstrated the benefits of Batanaful's products. Communication throughout the process was smooth and timely, and the final visuals were beautifully executed, capturing our brand aesthetic perfectly. Overall, the collaboration helped drive meaningful engagement and awareness.",
+      "One of the standout aspects of our collaboration was Anan's attention to detail and alignment with our brand and functional needs. The design felt considered, elegant, and genuinely reflected the character we wanted for the space. Communication throughout the process was smooth and timely, and the final result was beautifully executed, capturing our vision perfectly. Overall, the collaboration helped bring our project to life.",
     name: "Toyah Agard",
     company: "Batanaful",
   },
