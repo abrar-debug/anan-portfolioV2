@@ -11,14 +11,15 @@ const CTA_QUERY = `*[_type == "cta" && _id == "cta"][0]{
 
 const DEFAULTS = {
   heading: "Let's\nWork",
-  brandName: "Niki Zamora Creative",
+  brandName: "Anan Hoque Creative",
   email: "nikizamora.business@gmail.com",
   bookingUrl: "https://calendly.com/nikizamoraugc/ugc-consultation",
 };
 
 /**
- * Contact details (brandName, email, bookingUrl) are global: the Navbar and
- * Footer read from this same "cta" document so there is one source of truth.
+ * Contact details are global: Navbar, Footer, and CTA all read from this
+ * same "cta" document so there is one source of truth. Footer only uses
+ * `email` (its copyright line is a fixed developer credit, not brandName).
  */
 export function useCta() {
   const [data, setData] = useState(null);

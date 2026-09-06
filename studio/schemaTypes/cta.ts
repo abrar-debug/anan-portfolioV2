@@ -26,9 +26,9 @@ export const cta = defineType({
     defineField({
       name: 'brandName',
       title: 'Brand name',
-      description: 'Used site-wide: the header logo text, the footer credit, and here.',
+      description: 'Used site-wide: the header logo text and here.',
       type: 'string',
-      initialValue: 'Niki Zamora Creative',
+      initialValue: 'Anan Hoque Creative',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
